@@ -23,9 +23,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 
 ### PDNS ###
 
-#RUN cd /tmp && wget https://downloads.powerdns.com/releases/deb/pdns-static_${VERSION}_amd64.deb && dpkg -i pdns-static_${VERSION}_amd64.deb && rm pdns-static_${VERSION}_amd64.deb
-#RUN useradd --system pdns
-
 COPY assets/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY assets/nginx/vhost.conf /etc/nginx/sites-enabled/vhost.conf
 COPY assets/nginx/fastcgi_params /etc/nginx/fastcgi_params
@@ -42,8 +39,8 @@ RUN rm /etc/nginx/sites-enabled/default
 RUN php5enmod mcrypt
 RUN mkdir -p /var/www/html/ \
 	&& cd /var/www/html \
-	&& git clone https://github.com/wociscz/poweradmin.git . \
-	&& git checkout 98ecbb5692d4f9bc42110ec478be63eb5651c6de \
+	&& git clone https://github.com/diasporg/poweradmin.git . \
+	&& git checkout 7743ddbd97c97de845e5d7ddf549b26394da9a7e \
 	&& rm -R /var/www/html/install
 
 COPY assets/poweradmin/config.inc.php /var/www/html/inc/config.inc.php
