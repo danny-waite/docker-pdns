@@ -29,3 +29,4 @@ These options can be set:
 - **POWERADMIN_HOSTMASTER**: default hostmaster (Default: "", Possible Values: "<email>")
 - **POWERADMIN_NS1**: default Nameserver 1 (Default: "", Possible Values: "<domain>")
 - **POWERADMIN_NS2**: default Nameserver 2 (Default: "", Possible Values: "<domain>")
+- **PDNS_API_KEY**: if set, this will enable the powerdns internal webserver on port 8081 and the api. See https://doc.powerdns.com/md/httpapi/README/ for more information. 

@@ -15,6 +15,7 @@ PDNS_RECURSOR=${PDNS_RECURSOR:-no}
 POWERADMIN_HOSTMASTER=${POWERADMIN_HOSTMASTER:-}
 POWERADMIN_NS1=${POWERADMIN_NS1:-}
 POWERADMIN_NS2=${POWERADMIN_NS2:-}
+PDNS_API_KEY=${PDNS_API_KEY:-}
 
 until nc -z ${MYSQL_HOST} ${MYSQL_PORT}; do
     echo "$(date) - waiting for mysql..."
@@ -45,6 +46,13 @@ sed -i "s/{{PDNS_DISTRIBUTOR_THREADS}}/${PDNS_DISTRIBUTOR_THREADS}/" /etc/powerd
 sed -i "s/{{PDNS_RECURSIVE_CACHE_TTL}}/${PDNS_RECURSIVE_CACHE_TTL}/" /etc/powerdns/pdns.conf
 sed -i "s/{{PDNS_ALLOW_RECURSION}}/${PDNS_ALLOW_RECURSION}/" /etc/powerdns/pdns.conf
 sed -i "s/{{PDNS_RECURSOR}}/${PDNS_RECURSOR}/" /etc/powerdns/pdns.conf
+if [[ !  -z  ${PDNS_API_KEY}  ]]
+then
+	sed -i "s/{{PDNS_API_ACTIVE}}/yes/" /etc/powerdns/pdns.conf
+	sed -i "s/{{PDNS_API_KEY}}/${PDNS_API_KEY}/" /etc/powerdns/pdns.conf
+else
+	sed -i "s/{{PDNS_API_ACTIVE}}/no/" /etc/powerdns/pdns.conf
+fi
 
 ### POWERADMIN
 sed -i "s/{{MYSQL_HOST}}/${MYSQL_HOST}/" /var/www/html/inc/config.inc.php
