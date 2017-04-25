@@ -1,6 +1,5 @@
 PowerDNS Authoritative server and Poweradmin
 ===========
-[![](https://badge.imagelayers.io/dannywaite/powerdns:latest.svg)](https://imagelayers.io/?images=dannywaite/powerdns:latest 'Get your own badge on imagelayers.io')
 
 This image is available at `https://hub.docker.com/r/dannywaite/powerdns/`
 
