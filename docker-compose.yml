@@ -1,8 +1,8 @@
 version: "2"
 services:
   pdns:
-    build: . 
-    #image: secns/pdns
+    build: .
+    image: dannywaite/powerdns
     ports:
     - "53:53"
     - "53:53/udp"
